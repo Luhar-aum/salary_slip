@@ -91,8 +91,6 @@
         font-weight: bold;
         margin-top: 1rem;
          width: 100%;
-         
-
       }
 
     </style>
@@ -124,9 +122,8 @@
               <tr>
                 <th class="label">{{ key }} :</th>
                 <td
-                  class="value {% if personal_details[key] != '-' %} underline-value {% endif %}"
-                >
-                  {{ personal_details[key] }}
+                  class="value {% if personal_details[key] != '-' %} underline-value {% endif %}">
+                  {{ personal_details[key] }}    
                 </td>
               </tr>
               {% endfor %}
@@ -179,6 +176,7 @@
                 </tr>
               </tbody>
             </table>
+
           </div>
         </div>
         <hr id="bottom-line" class="mx-2" />
