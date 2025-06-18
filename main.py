@@ -95,7 +95,7 @@ async def upload_excel(request: Request, file: UploadFile = File(...)):
             re.sub(r'(?i)^deduction', '', col).strip(): parse_currency(row[col])
             for col in employee_df.columns
             if isinstance(col, str)
-            and re.match(r'(?i)^deduction', col.strip())  # starts with 'deduction', case-insensitive
+            and re.match(r'(?i)^deduction', col.strip())  
             and not re.search(r'(?i)total', col)          # does not contain 'total', case-insensitive
         }
 
@@ -121,6 +121,11 @@ async def upload_excel(request: Request, file: UploadFile = File(...)):
             "Department": get_column_value(row, ["Department"]),
             "Designation": get_column_value(row, ["Designation"]),
             "Joining Date": get_column_value(row, ["Joining Date", "Date of Joining", "DOJ"]),
+            
+            "Bank Name": company_info.get("Bank Name", "-"),
+            "Total Days": get_column_value(row, ["Number of Days", "Total Days"]),
+            "Present Days": get_column_value(row, ["Present Days", "Worked Days", "Days Present"]),
+
         }
 
 
